@@ -672,7 +672,7 @@ typedef struct _meshtastic_MqttClientProxyMessage {
         char text[435];
     } payload_variant;
     /* Whether the message should be retained (or not) */
-    bool retained;
+    bool retained_mesh;
 } meshtastic_MqttClientProxyMessage;
 
 typedef PB_BYTES_ARRAY_T(256) meshtastic_MeshPacket_encrypted_t;
@@ -1453,7 +1453,7 @@ X(a, STATIC,   SINGULAR, FIXED32,  icon,              8)
 X(a, STATIC,   SINGULAR, STRING,   topic,             1) \
 X(a, STATIC,   ONEOF,    BYTES,    (payload_variant,data,payload_variant.data),   2) \
 X(a, STATIC,   ONEOF,    STRING,   (payload_variant,text,payload_variant.text),   3) \
-X(a, STATIC,   SINGULAR, BOOL,     retained,          4)
+X(a, STATIC,   SINGULAR, BOOL,     retained_mesh,          4)
 #define meshtastic_MqttClientProxyMessage_CALLBACK NULL
 #define meshtastic_MqttClientProxyMessage_DEFAULT NULL
 
