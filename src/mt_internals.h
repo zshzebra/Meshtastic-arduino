@@ -10,6 +10,12 @@ void mt_debug_print(const char * s);
 extern bool mt_wifi_mode;
 extern bool mt_serial_mode;
 
+// Packet statistics
+extern uint32_t packets_processed;
+extern uint32_t packets_dropped;
+extern uint32_t resync_attempts;
+extern uint32_t resync_successful;
+
 bool mt_wifi_loop(uint32_t now);
 bool mt_serial_loop();
 
