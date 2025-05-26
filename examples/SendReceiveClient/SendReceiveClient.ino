@@ -86,15 +86,11 @@ void displayPubKey(meshtastic_MeshPacket_public_key_t pubKey, char *hex_str) {
 
 
 void encrypted_callback(uint32_t from, uint32_t to,  uint8_t channel, meshtastic_MeshPacket_public_key_t pubKey, meshtastic_MeshPacket_encrypted_t *enc_payload) {
-  Serial.print("Received an ENCRYPTED callback from: ");
-  Serial.print(from);
-  Serial.print(" to: ");
-  Serial.println(to);
+  Serial.printf("Received an ENCRYPTED callback from: %x to: %x\r\n", from, to);
 }
 
 void portnum_callback(uint32_t from, uint32_t to,  uint8_t channel, meshtastic_PortNum portNum, meshtastic_Data_payload_t *payload) {
-  Serial.print("Received a callback for PortNum ");
-  Serial.println(meshtastic_portnum_to_string(portNum));
+  Serial.printf("Received a callback for PortNum %s\r\n", meshtastic_portnum_to_string(portNum));
 }
 
 // This callback function will be called whenever the radio receives a text message

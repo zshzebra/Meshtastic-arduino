@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkout this repository
       uses: actions/checkout@v4
@@ -15,8 +15,5 @@ jobs:
           ~/.arduino15
         key: ${{ runner.os }}-arduino
     - name: Install nix
-      uses: cachix/install-nix-action@v31
-    - run: |
-        sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0
-        sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-        nix-shell -I nixpkgs=channel:nixpkgs-unstable -p arduino-ci --run "arduino-ci"
+      uses: cachix/install-nix-action@v30
+    - run: nix-shell -I nixpkgs=channel:nixpkgs-unstable -p arduino-ci --run "arduino-ci"
